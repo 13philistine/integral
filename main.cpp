@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <math.h>
 #define PI
 
@@ -12,17 +12,17 @@ double f(double x){
 }
 
 void vvod(){
-	cout << endl << "Ââåäèòå äèàïîçîí [a,b]" << endl;
+	cout << endl << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð´Ð¸Ð°Ð¿Ð¾Ð·Ð¾Ð½ [a,b]" << endl;
 	cin >> a;
 	cin >> b;
 	while ((b - a) < sh) {
-		cout << "Ââåäèòå øàã èíòåãðèðîâàíèÿ" << endl;
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÑˆÐ°Ð³ Ð¸Ð½Ñ‚ÐµÐ³Ñ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ" << endl;
 		cin >> sh;
 	}
 }
 
 void lp(){
-	cout << endl << "Ìåòîä ëåâûõ ïðÿìîóãîëüíèêîâ" << endl;
+	cout << endl << "ÐœÐµÑ‚Ð¾Ð´ Ð»ÐµÐ²Ñ‹Ñ… Ð¿Ñ€ÑÐ¼Ð¾ÑƒÐ³Ð¾Ð»ÑŒÐ½Ð¸ÐºÐ¾Ð²" << endl;
 	vvod();
 	x = a;
 	while (x < b) {
@@ -32,7 +32,7 @@ void lp(){
 }
 
 void rp(){
-	cout << endl << "Ìåòîä ðàâíûõ ïðÿìîóãîëüíèêîâ" << endl;
+	cout << endl << "ÐœÐµÑ‚Ð¾Ð´ Ñ€Ð°Ð²Ð½Ñ‹Ñ… Ð¿Ñ€ÑÐ¼Ð¾ÑƒÐ³Ð¾Ð»ÑŒÐ½Ð¸ÐºÐ¾Ð²" << endl;
 	vvod();
 	x = a;
 	while (x < b) {
@@ -42,7 +42,7 @@ void rp(){
 }
 
 void tr(){
-	cout << endl << "Ìåòîä òðàïåöèé" << endl;
+	cout << endl << "ÐœÐµÑ‚Ð¾Ð´ Ñ‚Ñ€Ð°Ð¿ÐµÑ†Ð¸Ð¹" << endl;
 	vvod();
 	x = a;
 	while (x < b) {
@@ -53,27 +53,27 @@ void tr(){
 
 void main() {
 	setlocale(0, "Russian");
-	cout << "Âû÷èñëåíèå èíòåãðàëà" << endl;
+	cout << "Ð’Ñ‹Ñ‡Ð¸ÑÐ»ÐµÐ½Ð¸Ðµ Ð¸Ð½Ñ‚ÐµÐ³Ñ€Ð°Ð»Ð°" << endl;
 	
 	while (true){
 		ch = 0;
 		while ((ch < 1) || (ch > 3)) {
-			cout << "Âûáåðèòå ìåòîä. 1 - ëåâûõ ïðÿìîóãîëüíèêîâ. 2 - ðàâíûõ ïðÿìîóãîëüíèêîâ, 3 - òðàïåöèé: ";
+			cout << "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ð¼ÐµÑ‚Ð¾Ð´. 1 - Ð»ÐµÐ²Ñ‹Ñ… Ð¿Ñ€ÑÐ¼Ð¾ÑƒÐ³Ð¾Ð»ÑŒÐ½Ð¸ÐºÐ¾Ð². 2 - Ñ€Ð°Ð²Ð½Ñ‹Ñ… Ð¿Ñ€ÑÐ¼Ð¾ÑƒÐ³Ð¾Ð»ÑŒÐ½Ð¸ÐºÐ¾Ð², 3 - Ñ‚Ñ€Ð°Ð¿ÐµÑ†Ð¸Ð¹: ";
 			cin >> ch;
 		}
 		switch (ch)
 		{
 		case 1:
 			lp();
-			cout << "Îòâåò: " << s;
+			cout << "ÐžÑ‚Ð²ÐµÑ‚: " << s;
 			break;
 		case 2:
 			rp();
-			cout << "Îòâåò: " << s;
+			cout << "ÐžÑ‚Ð²ÐµÑ‚: " << s;
 			break;
 		case 3:
 			tr();
-			cout << "Îòâåò: " << s;
+			cout << "ÐžÑ‚Ð²ÐµÑ‚: " << s;
 			break;
 		default:
 			break;
