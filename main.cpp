@@ -1,29 +1,40 @@
 #include <iostream>
 #include <math.h>
-#define PI
 
 using namespace std;
 int ch = 0;
-double  a = 0, b = 0, sh = 1000, ff = 0, x = 0, s = 0;
+double  a = 0, b = 0, sh = 1000, ff = 0, ffa = 0, ffb = 0, x = 0, s = 0;
 
 double f(double x){
 	ff = (13 * (x*x));
 	return ff;
 }
 
+double fa(double a){
+	ffa = (13 * (a*a));
+	return ffa;
+}
+
+double fb(double b){
+	ffb = (13 * (b*b));
+	return ffb;
+}
+
 void vvod(){
-	cout << endl << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð´Ð¸Ð°Ð¿Ð¾Ð·Ð¾Ð½ [a,b]" << endl;
+	cout << endl << "Ââåäèòå äèàïîçîí [a,b]" << endl;
 	cin >> a;
 	cin >> b;
 	sh = 1000;
-	while ((b - a) < sh) {
-		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÑˆÐ°Ð³ Ð¸Ð½Ñ‚ÐµÐ³Ñ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ" << endl;
-		cin >> sh;
+	if (ch != 4){
+		while ((b - a) < sh) {
+			cout << "Ââåäèòå øàã èíòåãðèðîâàíèÿ" << endl;
+			cin >> sh;
+		}
 	}
 }
 
 void lp(){
-	cout << endl << "ÐœÐµÑ‚Ð¾Ð´ Ð»ÐµÐ²Ñ‹Ñ… Ð¿Ñ€ÑÐ¼Ð¾ÑƒÐ³Ð¾Ð»ÑŒÐ½Ð¸ÐºÐ¾Ð²" << endl;
+	cout << endl << "Ìåòîä ëåâûõ ïðÿìîóãîëüíèêîâ" << endl;
 	vvod();
 	x = a;
 	while (x < b) {
@@ -33,7 +44,7 @@ void lp(){
 }
 
 void rp(){
-	cout << endl << "ÐœÐµÑ‚Ð¾Ð´ Ñ€Ð°Ð²Ð½Ñ‹Ñ… Ð¿Ñ€ÑÐ¼Ð¾ÑƒÐ³Ð¾Ð»ÑŒÐ½Ð¸ÐºÐ¾Ð²" << endl;
+	cout << endl << "Ìåòîä ðàâíûõ ïðÿìîóãîëüíèêîâ" << endl;
 	vvod();
 	x = a;
 	while (x < b) {
@@ -43,39 +54,58 @@ void rp(){
 }
 
 void tr(){
-	cout << endl << "ÐœÐµÑ‚Ð¾Ð´ Ñ‚Ñ€Ð°Ð¿ÐµÑ†Ð¸Ð¹" << endl;
+	cout << endl << "Ìåòîä òðàïåöèé" << endl;
 	vvod();
 	x = a;
 	while (x < b) {
-		s += ((f(x) + f(x + sh))*sh)/2;
+		s += ((f(x) + f(x + sh))*sh) / 2;
 		x += sh;
 	}
 }
 
+void sim(){
+	// ((b-a) / 6) * (fa(a) + 4*f(x)((a+b)/2)) + fb(b));
+	cout << endl << "Ôîðìóëà Ñèìïñîíà" << endl;
+	vvod();
+	//s = ((b - a) / 6) * (fa(a) + 4 * f((a + b) / 2) + fb(b));
+	double n = 1000;
+	sh = (b - a) / n;
+	for (int i = 0; i < n / 2; i++)
+	{
+		s = s + fa(a) + (4 * fa(a + sh)) + (fa(a + 2 * sh));
+		a = a + 2 * sh;
+	}
+	s = (s*sh) / 3;
+}
+
 void main() {
 	setlocale(0, "Russian");
-	cout << "Ð’Ñ‹Ñ‡Ð¸ÑÐ»ÐµÐ½Ð¸Ðµ Ð¸Ð½Ñ‚ÐµÐ³Ñ€Ð°Ð»Ð°" << endl;
-	
+	cout << "Âû÷èñëåíèå èíòåãðàëà" << endl;
+
 	while (true){
 		ch = 0;
 		s = 0;
-		while ((ch < 1) || (ch > 3)) {
-			cout << "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ð¼ÐµÑ‚Ð¾Ð´. 1 - Ð»ÐµÐ²Ñ‹Ñ… Ð¿Ñ€ÑÐ¼Ð¾ÑƒÐ³Ð¾Ð»ÑŒÐ½Ð¸ÐºÐ¾Ð². 2 - Ñ€Ð°Ð²Ð½Ñ‹Ñ… Ð¿Ñ€ÑÐ¼Ð¾ÑƒÐ³Ð¾Ð»ÑŒÐ½Ð¸ÐºÐ¾Ð², 3 - Ñ‚Ñ€Ð°Ð¿ÐµÑ†Ð¸Ð¹: ";
+		while ((ch < 1) || (ch > 4)) {
+			cout << "Âûáåðèòå ìåòîä. 1 - ëåâûõ ïðÿìîóãîëüíèêîâ. 2 - ðàâíûõ ïðÿìîóãîëüíèêîâ, 3 - òðàïåöèé, 4 - ìåòîä Ñèìïñîíà: ";
 			cin >> ch;
 		}
 		switch (ch)
 		{
 		case 1:
 			lp();
-			cout << "ÐžÑ‚Ð²ÐµÑ‚: " << s;
+			cout << "Îòâåò: " << s;
 			break;
 		case 2:
 			rp();
-			cout << "ÐžÑ‚Ð²ÐµÑ‚: " << s;
+			cout << "Îòâåò: " << s;
 			break;
 		case 3:
 			tr();
-			cout << "ÐžÑ‚Ð²ÐµÑ‚: " << s;
+			cout << "Îòâåò: " << s;
+			break;
+		case 4:
+			sim();
+			cout << "Îòâåò: " << s;
 			break;
 		default:
 			break;
